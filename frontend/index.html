@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support FAQ Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="new-chat-btn" id="newChatBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12h14" stroke-linecap="round" />
+        </svg>
+        New chat
+      </button>
+
+      <div class="conversation-list" id="conversationList">
+        <!-- conversation items injected by script.js -->
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="model-pill">
+          <span class="dot" id="statusDot"></span>
+          <span id="statusText">Connecting...</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main chat area -->
+    <main class="main">
+      <header class="chat-header">
+        <span class="chat-title">Customer Support FAQ Assistant</span>
+        <span class="chat-subtitle">Agentic RAG · LangGraph · ChromaDB</span>
+      </header>
+
+      <div class="messages" id="messages">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-state-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2a7 7 0 0 0-7 7v3.5L3 17h18l-2-4.5V9a7 7 0 0 0-7-7Z" stroke-linejoin="round" />
+              <path d="M9 21a3 3 0 0 0 6 0" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h1>How can I help with your order?</h1>
+          <p>Ask anything about accounts, payments, shipping, or returns.</p>
+          <div class="suggestion-grid" id="suggestionGrid">
+            <button class="suggestion-card" data-text="How can I create an account?">
+              <span class="suggestion-title">Create an account</span>
+              <span class="suggestion-sub">Step-by-step sign up help</span>
+            </button>
+            <button class="suggestion-card" data-text="What payment methods do you accept?">
+              <span class="suggestion-title">Payment methods</span>
+              <span class="suggestion-sub">See what's accepted</span>
+            </button>
+            <button class="suggestion-card" data-text="How can I track my order?">
+              <span class="suggestion-title">Track an order</span>
+              <span class="suggestion-sub">Find your shipment status</span>
+            </button>
+            <button class="suggestion-card" data-text="What is your return policy?">
+              <span class="suggestion-title">Returns policy</span>
+              <span class="suggestion-sub">Know your refund options</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="composer-wrap">
+        <form class="composer" id="composerForm">
+          <textarea
+            id="messageInput"
+            class="composer-input"
+            placeholder="Message the support assistant..."
+            rows="1"
+            autofocus
+          ></textarea>
+          <button type="submit" class="send-btn" id="sendBtn" disabled aria-label="Send message">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </form>
+        <p class="composer-hint">Answers are generated from a local FAQ knowledge base and may be imperfect.</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
