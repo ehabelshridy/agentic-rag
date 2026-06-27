@@ -96,21 +96,26 @@ every graph step printed in the terminal.
 ### 3b. Run the web app (chat UI)
 
 ```bash
-uvicorn server:app --host 0.0.0.0 --port 8000
+python server.py
 ```
 
-Then open **http://localhost:8000** in your browser. You'll see a
-ChatGPT-style interface: a sidebar with chat history, a centered
-message column, and a streaming "thinking" trace that shows each
-graph step (retrieving, grading, rewriting if triggered, generating,
-checking groundedness) before the final answer appears.
+This starts the server directly (no need to call `uvicorn` separately —
+`server.py` launches it for you). Then open **http://127.0.0.1:8000**
+in your browser. You'll see a ChatGPT-style interface: a sidebar with
+chat history, a centered message column, and a streaming "thinking"
+trace that shows each graph step (retrieving, grading, rewriting if
+triggered, generating, checking groundedness) before the final answer
+appears.
+
+> If you prefer running it via the `uvicorn` command instead, that
+> works too: `uvicorn server:app --host 127.0.0.1 --port 8000`.
 
 The frontend talks to two backend endpoints:
 - `POST /api/chat/stream` — Server-Sent Events stream of graph steps + final answer (used by the UI)
 - `POST /api/chat` — plain JSON request/response (useful for testing with `curl`)
 
 ```bash
-curl -X POST http://localhost:8000/api/chat \
+curl -X POST http://127.0.0.1:8000/api/chat \
   -H "Content-Type: application/json" \
   -d '{"message": "How can I track my order?"}'
 ```
