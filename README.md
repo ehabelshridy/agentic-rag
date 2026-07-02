@@ -5,6 +5,7 @@ An agentic RAG system built with LangGraph, based on the
 using entirely open-source models that run **online** via HuggingFace's
 hosted Inference Providers (no local model download, no GPU needed),
 with a ChatGPT-style web frontend.
+![Demo](agentic_rag.gif)
 
 ## Components
 
